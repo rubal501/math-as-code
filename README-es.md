@@ -20,9 +20,9 @@ Los símbolos matemáticos pueden significar cosas diferentes dependiendo del au
 
   Para una lista mas completa consulte: [Wikipedia - Anexo:Símbolos matemáticos](https://es.wikipedia.org/wiki/Anexo:Símbolos_matemáticos).
 
-For simplicity, many of the code examples here operate on floating point values and are not numerically robust. For more details on why this may be a problem, see [Robust Arithmetic Notes](https://github.com/mikolalysenko/robust-arithmetic-notes) by Mikola Lysenko.
+Por simplicidad, muchos de los códigos de ejemplo usan variables de punto flotante por lo que no son muy precisios numericamente. Para mas detalles sobre este problema, visite [Robust Arithmetic Notes](https://github.com/mikolalysenko/robust-arithmetic-notes) por Mikola Lysenko.
 
-# contents
+# Contenido
 
 - [variable name conventions](#variable-name-conventions)
 - [Igualdades `=` `≈` `≠` `:=`](#equals-symbols)
@@ -70,71 +70,69 @@ Esta notacion se usara en la guia
 
 Hay varios simbolos que se parecen al simbolo de igualdad `=`. Estos son algunos ejemplos:
 
-- `=` is for equality (values are the same)
-- `≠` is for inequality (value are not the same)
-- `≈` is for approximately equal to (`π ≈ 3.14159`)
-- `:=` is for definition (A is defined as B)
+- `=` es para igualdades (los valores son los mismos)
+- `≠` es para diferencia (los valores no son los mismos)
+- `≈` es para aproximar un valor (`π ≈ 3.14159`)
+- `:=` es para hacer definiciones (A is defined as B)
 
-In JavaScript:
+En JavaScript:
 
 ```js
-// equality
+// igualdad
 2 === 3
 
-// inequality
+// diferencia
 2 !== 3
 
-// approximately equal
+// aproximadamente igual a
 almostEqual(Math.PI, 3.14159, 1e-5)
 
 function almostEqual(a, b, epsilon) {
   return Math.abs(a - b) <= epsilon
 }
 ```
+Puedes encontrar los simbolos:  siendo usado para *definir*.<sup>[1]</sup>
 
-You might see the `:=`, `=:` and `=` symbols being used for *definition*.<sup>[1]</sup>
-
-For example, the following defines *x* to be another name for 2*kj*.
+Por ejemplo, a continuacion se define *x* como un nombre diferente para 2*kj*.
 
 ![equals1](http://latex.codecogs.com/svg.latex?x%20%3A%3D%202kj)
 
 <!-- x := 2kj -->
 
-In JavaScript, we might use `var` to *define* our variables and provide aliases:
+En JavaScript, podemos usar `var` para *definir* nuestras variables y darles nombres:
 
 ```js
 var x = 2 * k * j
 ```
+Sin embargo esto es mutable,y solo toma una vez los valores. Algunos lenguajes tienen sentencias de preprocesador como `#define` que su comportamiento es mas parecido a la *definición* matemática. 
 
-However, this is mutable, and only takes a snapshot of the values at that time. Some languages have pre-processor `#define` statements, which are closer to a mathematical *define*.
-
-A more accurate *define* in JavaScript (ES6) might look a bit like this:
+Una forma mas precisa de *definir* en JavaScript (ES6) puede ser así:
 
 ```js
 const f = (k, j) => 2 * k * j
 ```
 
-The following, on the other hand, represents equality:
+Lo siguiente, representa igualdad:
 
 ![equals2](http://latex.codecogs.com/svg.latex?x%20%3D%202kj)
 
 <!-- x = 2kj -->
 
-The above equation might be interpreted in code as an [assertion](https://developer.mozilla.org/en-US/docs/Web/API/console/assert):
+La ecuación anterior puede ser interpretada en codigo como una [assertion](https://developer.mozilla.org/en-US/docs/Web/API/console/assert): 
 
 ```js
 console.assert(x === (2 * k * j))
 ```
 
-## square root and complex numbers
+## Raíz cuadrada y números complejos
 
-A square root operation is of the form:
+La raíz cuadrada tiene la siguiente estructura:
 
 ![squareroot](http://latex.codecogs.com/svg.latex?%5Cleft%28%5Csqrt%7Bx%7D%5Cright%29%5E2%20%3D%20x)
 
 <!-- \left(\sqrt{x}\right)^2 = x -->
 
-In programming we use a `sqrt` function, like so:
+En programación se usa la función `sqrt`, como se puede ver a continuación:
 
 ```js
 var x = 9;
@@ -142,7 +140,7 @@ console.log(Math.sqrt(x));
 //=> 3
 ```
 
-Complex numbers are expressions of the form ![complex](http://latex.codecogs.com/svg.latex?a&space;&plus;&space;ib), where ![a](http://latex.codecogs.com/svg.latex?a) is the real part and ![b](http://latex.codecogs.com/svg.latex?b) is the imaginary part. The imaginary number ![i](http://latex.codecogs.com/svg.latex?i) is defined as:
+Los numeros complejos tienen la siguiente forma ![complex](http://latex.codecogs.com/svg.latex?a&space;&plus;&space;ib), donde ![a](http://latex.codecogs.com/svg.latex?a) es la parte real ![b](http://latex.codecogs.com/svg.latex?b) es la parte imaginaria. The imaginary number ![i](http://latex.codecogs.com/svg.latex?i) is defined as:
 
 ![imaginary](http://latex.codecogs.com/svg.latex?i%3D%5Csqrt%7B-1%7D).
 <!-- i=\sqrt{-1} -->
